@@ -1,0 +1,16 @@
+version: 1.0.0
+metadata:
+  name: GatewayService
+  slug: gateway-service
+  description: API Gateway & Orchestrator
+
+# Публичный HTTP API
+http:
+  main:
+    spec: src/contracts/http/api.proto
+    port: 3000
+
+# Публикация событий
+events:
+  main:
+    spec: src/contracts/events/events.proto
