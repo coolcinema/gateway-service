@@ -2,14 +2,14 @@ import { BuyTicketRequest, BuyTicketResponse } from './_gen/grpc/http/api';
 import { GatewayEventsClient } from './_gen/grpc/events/events';
 import { Events } from '@coolcinema/foundation';
 import { Controller, Inject, Post, Body, HttpException } from '@nestjs/common';
-import { type SalesServiceClient } from './_gen/grpc/sales-service_grpc_sales';
 import { type NewServiceClient } from './_gen/grpc/new-service_grpc_new';
+import { type ThreeServiceClient } from './_gen/grpc/three-service_grpc_three';
 
 @Controller('v1')
 export class AppController {
   constructor(
     @Inject('newService') private newS: NewServiceClient,
-    @Inject('salesService') private sales: SalesServiceClient,
+    @Inject('threeService') private sales: ThreeServiceClient,
     @Inject('GATEWAY_EVENTS')
     private events: Events.EventsPublisher<GatewayEventsClient>,
   ) {}

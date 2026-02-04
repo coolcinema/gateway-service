@@ -3,16 +3,17 @@ import { Grpc, Events } from '@coolcinema/foundation';
 import { Registry } from '@coolcinema/contracts';
 
 import { GatewayEventsDefinition } from './_gen/grpc/events/events';
-import { SalesServiceDefinition } from './_gen/grpc/sales-service_grpc_sales';
+// import { SalesServiceDefinition } from './_gen/grpc/sales-service_grpc_sales';
 
 import { AppController } from './app.controller';
 import { NewServiceDefinition } from './_gen/grpc/new-service_grpc_new';
+import { ThreeServiceDefinition } from './_gen/grpc/three-service_grpc_three';
 
 @Module({
   imports: [
     Grpc.Nest.Module.forRoot(Registry, {
       new: NewServiceDefinition,
-      sales: SalesServiceDefinition,
+      three: ThreeServiceDefinition,
     }),
 
     Events.Nest.Module.register({
