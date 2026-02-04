@@ -9,7 +9,7 @@ import { type ThreeServiceClient } from './_gen/grpc/three-service_grpc_three';
 export class AppController {
   constructor(
     @Inject('newService') private newS: NewServiceClient,
-    @Inject('threeService') private sales: ThreeServiceClient,
+    @Inject('threeService') private three: ThreeServiceClient,
     @Inject('GATEWAY_EVENTS')
     private events: Events.EventsPublisher<GatewayEventsClient>,
   ) {}
@@ -19,7 +19,7 @@ export class AppController {
     const user = await this.newS.getUser({ id: body.userId });
     if (!user.isActive) throw new HttpException('User blocked', 403);
 
-    const priceInfo = await this.sales.calculatePrice({
+    const priceInfo = await this.three.calculatePrice({
       showtimeId: body.showtimeId,
     });
 
